@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://26u0xgwjfptt"]
+
+[ext_resource type="Script" path="res://assets/sprites/door_1.gd" id="1_l2u4k"]
+[ext_resource type="Texture2D" uid="uid://drdp30omnjxgg" path="res://assets/sprites/fruit.png" id="1_qhq7k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2qyo"]
+atlas = ExtResource("1_qhq7k")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vxed"]
+atlas = ExtResource("1_qhq7k")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgblb"]
+atlas = ExtResource("1_qhq7k")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mkja"]
+atlas = ExtResource("1_qhq7k")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_evrmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2qyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vxed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgblb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mkja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnal1"]
+size = Vector2(10, 13)
+
+[sub_resource type="Animation" id="Animation_ev81c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f3rl7"]
+resource_name = "tongguan1"
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.17, 0.49, 0.88, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.788235, 0, 0, 1), Color(0.152941, 0.141176, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82f26"]
+_data = {
+"RESET": SubResource("Animation_ev81c"),
+"tongguan1": SubResource("Animation_f3rl7")
+}
+
+[node name="door1" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_l2u4k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_evrmb")
+autoplay = "default"
+frame_progress = 0.0888346
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gnal1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -54.0
+offset_top = -36.0
+offset_right = 58.0
+offset_bottom = -13.0
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+text = "第一关，通过！"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+"": SubResource("AnimationLibrary_82f26")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

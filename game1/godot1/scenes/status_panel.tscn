@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbatuxjcgqogd"]
+
+[ext_resource type="Texture2D" uid="uid://bhwfxbwhkuqkb" path="res://assets/sprites/coin.png" id="1_5pq51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_garas"]
+atlas = ExtResource("1_5pq51")
+region = Rect2(3, 3, 10, 10)
+
+[node name="StatusPanel" type="HBoxContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_garas")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -2.0
+offset_right = 54.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 10
+text = "X"

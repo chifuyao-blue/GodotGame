@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm2ry5w6gkgir"]
+
+[ext_resource type="Script" path="res://scenes/gunaka.gd" id="1_gpaty"]
+[ext_resource type="Theme" uid="uid://dc0ap8gbncu1p" path="res://assets/new_theme.tres" id="2_xfobs"]
+
+[node name="gunaka" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gpaty")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 52.0
+offset_right = 638.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 40
+text = "请选择关卡！"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 227.0
+offset_right = 606.0
+offset_bottom = 498.0
+theme = ExtResource("2_xfobs")
+
+[node name="Button1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button3")
+theme_override_font_sizes/font_size = 36
+text = "1"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "2"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Button1")
+theme_override_font_sizes/font_size = 36
+text = "3"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="VBoxContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

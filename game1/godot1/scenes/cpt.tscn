@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3gglmqabswss"]
+
+[ext_resource type="Texture2D" uid="uid://b8eranuopf5ny" path="res://assets/sprites/platforms.png" id="1_fg30m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw257"]
+atlas = ExtResource("1_fg30m")
+region = Rect2(0, 0, 48, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syjt2"]
+size = Vector2(326, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ettk"]
+atlas = ExtResource("1_fg30m")
+region = Rect2(0, 0, 48, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dy0v"]
+atlas = ExtResource("1_fg30m")
+region = Rect2(0, 0, 48, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm6iq"]
+atlas = ExtResource("1_fg30m")
+region = Rect2(0, 0, 48, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yelh0"]
+atlas = ExtResource("1_fg30m")
+region = Rect2(0, 0, 48, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjnq0"]
+size = Vector2(6, 10.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iebyq"]
+size = Vector2(8, 10)
+
+[node name="CPT" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(171.5, 0)
+scale = Vector2(1.72916, 1)
+texture = SubResource("AtlasTexture_xw257")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(182, 0)
+shape = SubResource("RectangleShape2D_syjt2")
+one_way_collision = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(103, 0)
+scale = Vector2(1.20833, 1)
+texture = SubResource("AtlasTexture_0ettk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(243, 0)
+scale = Vector2(1.29167, 1)
+texture = SubResource("AtlasTexture_6dy0v")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(310, 0)
+scale = Vector2(1.5, 1)
+texture = SubResource("AtlasTexture_rm6iq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(47, 0)
+scale = Vector2(1.1875, 1)
+texture = SubResource("AtlasTexture_yelh0")
+
+[node name="youqiang" type="AnimatableBody2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="youqiang"]
+position = Vector2(346, -9.75)
+shape = SubResource("RectangleShape2D_yjnq0")
+
+[node name="zuoqiang" type="AnimatableBody2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="zuoqiang"]
+position = Vector2(21, -12)
+shape = SubResource("RectangleShape2D_iebyq")
+one_way_collision = true

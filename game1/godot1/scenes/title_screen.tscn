@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://b30bxw82xg2l7"]
+
+[ext_resource type="Script" path="res://assets/sprites/title_screen.gd" id="1_3by8s"]
+[ext_resource type="FontFile" uid="uid://xc5a7jy81wnt" path="res://assets/fonts/SmileySans-Oblique.otf" id="1_xvn7q"]
+[ext_resource type="Theme" uid="uid://dc0ap8gbncu1p" path="res://assets/new_theme.tres" id="2_kob54"]
+
+[node name="TitleScreen" type="Control"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3by8s")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 67.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_xvn7q")
+theme_override_font_sizes/font_size = 50
+text = "一命通关"
+horizontal_alignment = 1
+
+[node name="V" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -120.5
+offset_right = -117.0
+offset_bottom = 268.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_kob54")
+
+[node name="NewGame" type="Button" parent="V"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ExitGame")
+theme_override_font_sizes/font_size = 36
+text = "新游戏"
+
+[node name="LoadGame" type="Button" parent="V"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_kob54")
+theme_override_font_sizes/font_size = 36
+text = "继续游戏"
+
+[node name="guanka" type="Button" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "关卡选择"
+
+[node name="caozuo" type="Button" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "操作设置"
+
+[node name="ExitGame" type="Button" parent="V"]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_neighbor_bottom = NodePath("../NewGame")
+theme = ExtResource("2_kob54")
+theme_override_font_sizes/font_size = 36
+text = "退出游戏"
+
+[connection signal="pressed" from="V/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="V/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="V/guanka" to="." method="_on_guanka_pressed"]
+[connection signal="pressed" from="V/caozuo" to="." method="_on_caozuo_pressed"]
+[connection signal="pressed" from="V/ExitGame" to="." method="_on_exit_game_pressed"]

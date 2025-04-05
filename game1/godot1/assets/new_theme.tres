@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dc0ap8gbncu1p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtrpk"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_wtrpk")
+Button/styles/focus = null
